@@ -4,10 +4,22 @@
 // }
 
 function next(slides, currentSlide) {
-    const i = slides.indexOf(currentSlide) + 1;
-    let nextSlide = i < slides.length ? slides[i] : slides[0];
+    const index = slides.indexOf(currentSlide) + 1;
+    let nextSlide = index < slides.length ? slides[index] : slides[0];
     currentSlide.style.transform = 'translateX(-100%)';
+    currentSlide.style.zIndex = '1';
+
     nextSlide.style.transform = 'translateX(0)';
+    nextSlide.style.zIndex = '1';
+
+    currentSlide.classList.remove('is-active');
+    nextSlide.classList.add('is-active');
+
+    const olderIndex = slides.indexOf(currentSlide) - 1;
+    let olderSlide = olderIndex >= 0 ? slides[olderIndex] : slides[3];
+    olderSlide.style.transform = 'translateX(100%)';
+    olderSlide.style.zIndex = '0';
+    console.log(slides.indexOf(olderSlide), olderSlide);
 }
 
 const buttonNext = document.querySelector('.dropslider-controllers__next');
@@ -16,7 +28,6 @@ const slides = Array.from(dropsliderItems);
 
 buttonNext.addEventListener('click', () => {
     let currentSlide = document.querySelector('.is-active');
-    console.log(currentSlide);
     next(slides, currentSlide);
 });
 
