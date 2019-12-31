@@ -4,11 +4,31 @@ function setInitialPosition(slide) {
     tl.set(slide, {x: "100%"});
 }
 
+function next(activeSlide, nextSlide) {
+    tl.to(activeSlide, {duration: 1, x: "-100%"})
+        .to(nextSlide, {duration: 1, x: "0"})
+        .set(activeSlide, {x: "100%"});
+}
+
+function getNext(slides, activeSlide) {    
+    const index = slides.indexOf(activeSlide) + 1;
+    let nextSlide = index < slides.length ? slides[index] : slides[0];
+
+    return nextSlide;
+}
+
 const dropsliderItems = document.querySelectorAll('.dropslider__item');
 
 dropsliderItems.forEach(
     item => item.classList.contains('is-active') ? null : setInitialPosition(item)
 );
+
+const buttonNext = document.querySelector('.dropslider-controllers__next');
+
+buttonNext.addEventListener('click', () => {
+    let activeSlide = document.querySelector('.is-active');
+    next(activeSlide, getNext(slides, activeSlide));
+});
 
 // function next(slides, currentSlide) {
 //     const index = slides.indexOf(currentSlide) + 1;
