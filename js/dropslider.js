@@ -8,10 +8,9 @@ function next(activeSlide, nextSlide) {
     let slideTime = 1;
     tl.to(activeSlide, { duration: slideTime, x: "-100%" })
         .to(nextSlide, { duration: slideTime, x: "0" }, `=-${slideTime}`)
-        .set(activeSlide, {x: "100%"});
-
-    activeSlide.classList.remove('is-active');
-    nextSlide.classList.add('is-active');
+        .set(activeSlide, { x: "100%" });
+    
+    updateActiveSlide(activeSlide, nextSlide);
 }
 
 function getNext(slides, activeSlide) {    
@@ -19,6 +18,11 @@ function getNext(slides, activeSlide) {
     let nextSlide = index < slides.length ? slides[index] : slides[0];
 
     return nextSlide;
+}
+
+function updateActiveSlide(currentSlide, otherSlide) {
+    currentSlide.classList.remove('is-active');
+    otherSlide.classList.add('is-active');
 }
 
 const dropsliderItems = document.querySelectorAll('.dropslider__item');
