@@ -1,0 +1,19 @@
+{
+  "name": "dropslider",
+  "version": "1.0.0",
+  "description": "Project to practice JavaScript and Frameworks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/figueiredo-uideveloper/dropslider.git"
+  },
+  "author": "Leandro Figueiredo UiDeveloper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/figueiredo-uideveloper/dropslider/issues"
+  },
+  "homepage": "https://github.com/figueiredo-uideveloper/dropslider#readme"
+}
